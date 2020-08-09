@@ -3,10 +3,15 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 CAT_OPTIONS = [
-    ('CF', 'Conferencia'),
-    ('SE', 'Seminario'),
-    ('CG', 'Congreso'),
-    ('CR', 'Curso')
+    ('CONFERENCE', 'Conferencia'),
+    ('SEMINAR', 'Seminario'),
+    ('CONGRESS', 'Congreso'),
+    ('COURSE', 'Curso')
+    ]
+
+VIR_OPTIONS = [
+    ('VIRTUAL', 'Virtual'),
+    ('PRESENCIAL', 'Presencial')
     ]
 
 class Event(models.Model):
@@ -16,7 +21,7 @@ class Event(models.Model):
     event_address =  models.CharField(max_length=100)
     event_initial_date = models.DateField()
     event_final_date = models.DateField()
-    event_type =  models.BooleanField(default=True)
+    event_type =  models.CharField(choices=VIR_OPTIONS,max_length=10)
     thumbnail = models.ImageField(upload_to='thumbnail_image')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     creation_date = models.DateTimeField(auto_now_add = True, editable=False )
