@@ -1,7 +1,7 @@
 from rest_auth.views import LoginView
 
 
-class CustonAuth(LoginView):
+class CustomAuth(LoginView):
     def get_response(self):
         orginal_response = super().get_response()
         mydata = {"message": "some message", "status": "success"}

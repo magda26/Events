@@ -10,14 +10,14 @@ CAT_OPTIONS = [
 
 class Event(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False)
-    category = models.CharField(choices=CAT_OPTIONS)
+    category = models.CharField(choices=CAT_OPTIONS,max_length=10)
     place = models.CharField(max_length=30)
     address =  models.CharField(max_length=100)
     start_date = models.DateField()
     end_date = models.DateField()
     virtual =  models.BooleanField(default=True)
     created_date = models.DateField()
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return '{} - {}'.format(self.id, self.name)

@@ -2,6 +2,7 @@ from rest_framework import serializers
 from rest_auth.registration.serializers import RegisterSerializer
 from django.contrib.auth import get_user_model
 from rest_auth.models import TokenModel
+from .models import Event
 
 User = get_user_model()
 
