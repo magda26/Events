@@ -6,6 +6,6 @@ from .models import Event
 from .serializers import EventSerializer
 
 class EventViewSet(viewsets.ModelViewSet):
-    queryset = Event.objects.all().order_by('-created_at')
+    queryset = Event.objects.all().order_by('creation_date')
     serializer_class = EventSerializer
     http_method_names = ['get','post']
