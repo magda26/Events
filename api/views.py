@@ -8,4 +8,4 @@ from .serializers import EventSerializer
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all().order_by('-created_at')
     serializer_class = EventSerializer
-    http_method_names = ['get']
+    http_method_names = ['get','post']
