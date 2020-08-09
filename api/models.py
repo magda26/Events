@@ -22,7 +22,7 @@ class Event(models.Model):
     event_initial_date = models.DateField()
     event_final_date = models.DateField()
     event_type =  models.CharField(choices=VIR_OPTIONS,max_length=10)
-    thumbnail = models.ImageField(upload_to='thumbnail_image')
+    thumbnail = models.ImageField(upload_to='thumbnail_image',default='default-thumbnail.jpg')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     creation_date = models.DateTimeField(auto_now_add = True, editable=False )
 
