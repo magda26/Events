@@ -16,7 +16,7 @@ class Event(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     virtual =  models.BooleanField(default=True)
-    user = models.ForeignKey(User, unique=True)
+    user = models.ForeignKey(User)
 
     def __str__(self):
         return '{} - {}'.format(self.id, self.name)

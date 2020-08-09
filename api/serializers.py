@@ -6,24 +6,17 @@ from rest_auth.models import TokenModel
 User = get_user_model()
 
 class CustomRegisterSerializer(RegisterSerializer):
-    first_name = serializers.CharField(required=False)
-    last_name = serializers.CharField(required=False)
-
+    first_name = serializers.CharField(required=True)
+    last_name = serializers.CharField(required=True)
+    
     def custom_signup(self, request, user):
         user.first_name = self.validated_data.get('first_name', '')
         user.last_name = self.validated_data.get('last_name', '')
-        user.save(update_fields=['first_name', 'last_name'])
-
-
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ('id', 'username', 'get_full_name')
-
-
+        user.save(update_fields=['first_name','last_name'])
+    
 class CustomTokenSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
-
+    token = serializers.CharField(source ='key')
+   
     class Meta:
         model = TokenModel
-        fields = ('key', 'user')
+        fields = ('token',)

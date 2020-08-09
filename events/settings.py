@@ -37,10 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
     'rest_auth.registration',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'api'
 ]
 
@@ -81,12 +85,14 @@ REST_FRAMEWORK = {
 }
 
 REST_AUTH_REGISTER_SERIALIZERS = {
-    'REGISTER_SERIALIZER': 'users.serializers.CustomRegisterSerializer',
+    'REGISTER_SERIALIZER': 'api.serializers.CustomRegisterSerializer',
 }
 
 REST_AUTH_SERIALIZERS = {
-    'TOKEN_SERIALIZER': 'users.serializers.CustomTokenSerializer',
+    'TOKEN_SERIALIZER': 'api.serializers.CustomTokenSerializer',
 }
+
+SITE_ID = 1
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
