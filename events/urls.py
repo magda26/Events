@@ -17,11 +17,11 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from api.urls import router as api_router
+from api.urls import router as events_router
 from .views import CustomAuth
 
 router = routers.DefaultRouter()
-router.registry.extend(api_router.registry)
+router.registry.extend(events_router.registry)
 
 
 urlpatterns = [

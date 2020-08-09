@@ -9,14 +9,14 @@ CAT_OPTIONS = [
     ]
 
 class Event(models.Model):
-    name = models.CharField(max_length=100, null=False, blank=False)
-    category = models.CharField(choices=CAT_OPTIONS,max_length=10)
-    place = models.CharField(max_length=30)
-    address =  models.CharField(max_length=100)
-    start_date = models.DateField()
-    end_date = models.DateField()
-    virtual =  models.BooleanField(default=True)
-    created_date = models.DateField()
+    event_name = models.CharField(max_length=100, null=False, blank=False)
+    event_category = models.CharField(choices=CAT_OPTIONS,max_length=10)
+    event_place = models.CharField(max_length=30)
+    event_address =  models.CharField(max_length=100)
+    event_initial_date = models.DateField()
+    event_final_date = models.DateField()
+    event_type =  models.BooleanField(default=True)
+    thumbnail = models.ImageField(upload_to='thumbnail_image')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
