@@ -3,6 +3,7 @@ from django.conf import settings
 from django_userforeignkey.models.fields import UserForeignKey
 from django.utils import timezone
 import uuid
+from datetime import date
 
 
 CAT_OPTIONS = [
@@ -16,6 +17,14 @@ VIR_OPTIONS = [
     ('VIRTUAL', 'Virtual'),
     ('PRESENCIAL', 'Presencial')
     ]
+
+
+def get_path_class(instance, filename):
+    extension = os.path.splitext(filename)[1][1:]
+    class_directory = instance.__class__.__name__
+    path = os.path.join(class_directory)
+    filename = '{}.{}'.format(date.today().strftime("%Y-%m-%d") + "_" + uuid4().hex, extension)
+    return os.path.join(path, filename)
 
 class Event(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
