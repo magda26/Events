@@ -19,3 +19,7 @@ class EventViewSet(viewsets.ModelViewSet):
         serializer = EventSerializer(event)
         event.delete()
         return Response(serializer.data)
+
+
+def index(request):
+    retrun render(request, "events/index.html")
