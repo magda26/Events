@@ -7,7 +7,7 @@ from django.urls import path, include
 from rest_framework import routers
 from api.urls import router as events_router
 from rest_auth.views import LoginView
- from api import views
+from api import views
 
 router = routers.DefaultRouter()
 router.registry.extend(events_router.registry)

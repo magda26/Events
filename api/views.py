@@ -22,4 +22,4 @@ class EventViewSet(viewsets.ModelViewSet):
 
 
 def index(request):
-    retrun render(request, "events/index.html")
+    return render(request, "events/index.html")
